@@ -13,9 +13,7 @@ La page intègre :
 
 ## Structure du projet
 
-\`\`\`
 / (racine du projet)
-│
 ├── index.html           # Page principale de la landing
 ├── main.css             # Styles globaux (Flexbox, grilles, responsivité)
 ├── subscribe.php        # Script PHP pour enregistrer les abonnés newsletter
@@ -24,7 +22,7 @@ La page intègre :
 ├── .vscode/             # Configuration VSCode (Live Server)
 │   └── settings.json
 └── README.md            # Ce fichier
-\`\`\`
+
 
 ## Technologies utilisées
 
