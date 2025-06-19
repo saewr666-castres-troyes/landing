@@ -45,19 +45,6 @@ La page intègre :
   * Icônes pour illustrer les sections (par ex. \`<span class="icon fa-crosshairs">\`).
 * **VSCode** + **Live Server** pour le développement local.
 
-## Installation et exécution locale
-
-1. Cloner ou télécharger le projet.
-2. Placer les fichiers dans un dossier accessible.
-3. Ouvrir un terminal à la racine du projet.
-4. Lancer le serveur PHP intégré :
-
-   \`\`\`bash
-   php -S 127.0.0.1:8000
-   \`\`\`
-
-5. Accéder à la page dans votre navigateur : \`http://127.0.0.1:8000/index.html\`.
-
 ## Déploiement
 
 * Hébergement avec support PHP (mutualisé, VPS, etc.).
@@ -75,8 +62,6 @@ La page intègre :
   }
   \`\`\`
 
-* Ajouter/supprimer des cards dans \`index.html\` en dupliquant les blocs \`<article class="box style2">...\`\`.
-
 ---
 
-*Landing page développée pour illustrer une application citoyenne, simple à déployer et à personnaliser.*
+*Landing page développée pour illustrer une application pour une ville de demain, citoyenne, simple à déployer et à personnaliser.*
