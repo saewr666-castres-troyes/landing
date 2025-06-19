@@ -14,14 +14,14 @@ La page intègre :
 ## Structure du projet
 
 ```text
-/ (racine du projet)
+/ (racine)
 │
 ├── index.html           # Page principale de la landing
 ├── main.css             # Styles globaux (Flexbox, grilles, responsivité)
 ├── subscribe.php        # Script PHP pour enregistrer les abonnés newsletter
 ├── subscribers.json     # Fichier JSON stockant les emails abonnés
 ├── images/              # Dossier contenant les illustrations des cards
-├── .vscode/             # Configuration VSCode (Live Server)
+├── .vscode/             # Configuration VSCode (Live Server pour éxécution locale)
 │   └── settings.json
 └── README.md            # Ce fichier
 ```  
