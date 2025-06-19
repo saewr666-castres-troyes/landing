@@ -1,4 +1,4 @@
-# Landing Page Readme
+# ReadME de la Landing Page du projet
 
 ## Description
 
