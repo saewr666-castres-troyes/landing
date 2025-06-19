@@ -7,6 +7,7 @@ Ce projet est une landing page destinée à présenter les fonctionnalités d'un
 La page intègre :
 
 * Un formulaire de contact (via Formspree).
+* Une newsletter.
 * Un module d'inscription à une newsletter, stockant les adresses dans un fichier JSON local.
 * Une grille responsive de cards illustrant les principales fonctionnalités.
 
