@@ -7,6 +7,7 @@ Ce projet est une landing page destinée à présenter les fonctionnalités d'un
 La page intègre :
 
 * Un formulaire de contact (via Formspree).
+* Une newsletter.
 * Un module d'inscription à une newsletter, stockant les adresses dans un fichier JSON local.
 * Une grille responsive de cards illustrant les principales fonctionnalités.
 
@@ -44,17 +45,6 @@ La page intègre :
   * Icons pour illustrer les sections (par ex. `<span class="icon fa-crosshairs">`).
 * **VSCode** + **Live Server** pour le développement local.
 
-## Installation et exécution locale
-
-1. Cloner ou télécharger le projet.
-2. Placer les fichiers dans un dossier accessible.
-3. Ouvrir un terminal à la racine du projet.
-4. Lancer le serveur PHP intégré :
-
-   ```bash
-   php -S 127.0.0.1:8000
-   ```
-5. Accéder à la page dans votre navigateur : `http://127.0.0.1:8000/index.html`.
 
 ## Déploiement
 
