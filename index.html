@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>FLURBAN</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="images/Plan_de_travail_1_copie.png"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-dYmGvjXjKpMVDP+MK9Kxv5Mo5d/fm1oPeX3/0ZwI1efRfqQOe7g3zO1G4mgTQFEN7LsE6H9ASg7vT5bZ3df+KA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="is-preload">
+    <!-- Loader -->
+    <!-- Loader (inchangé) -->
+    <div id="page-loader">
+      <div class="loader-content">
+        <span id="loader-percentage">0%</span>
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <script>
+      // ⬇︎ Ton code de loader existant
+      const loader = document.getElementById("page-loader");
+      const startTime = performance.now();
+      const pctEl = document.getElementById("loader-percentage");
+
+      window.addEventListener("load", () => {
+        const host = location.hostname;
+        const isLocal = host === "localhost" || host === "127.0.0.1";
+        const realTime = performance.now() - startTime;
+        const minTime = isLocal ? 1000 : 0;
+        const loadTime = Math.max(realTime, minTime);
+        const animStart = performance.now();
+
+        function animate() {
+          const elapsed = performance.now() - animStart;
+          const pct = Math.min(100, (elapsed / loadTime) * 100);
+          pctEl.textContent = Math.floor(pct) + "%";
+
+          if (pct < 100) {
+            requestAnimationFrame(animate);
+          } else {
+            // on cache le loader
+            setTimeout(() => loader.classList.add("loaded"), 300);
+          }
+        }
+        animate();
+
+        // ⬇︎ On attend la fin de la transition opacity pour lancer le nav
+        loader.addEventListener("transitionend", (e) => {
+          if (e.propertyName === "opacity") {
+            document.getElementById("nav").classList.add("animate-nav");
+          }
+        });
+      });
+      // après avoir ajouté animate-nav
+      loader.addEventListener("transitionend", (e) => {
+        if (e.propertyName === "opacity") {
+          document.getElementById("nav").classList.add("animate-nav");
+          // et on fait apparaître la barre de scroll
+          document.getElementById("scrollProgress").classList.add("show");
+        }
+      });
+    </script>
+
+    <!-- Nav -->
+    <nav
+      id="nav"
+      style="background-color: rgb(140 159 130 / var(--tw-bg-opacity, 1))"
+    >
+      <ul class="container">
+        <li><a href="#1">Accueil</a></li>
+        <li><a href="#2">Qui sommes nous ?</a></li>
+        <li><a href="#3">L'application</a></li>
+        <li><a href="#4">Nous contacter</a></li>
+      </ul>
+    </nav>
+
+    <!-- Barre de progression de scroll -->
+    <div id="scrollProgress">
+      <div id="scrollBar"></div>
+    </div>
+    <script>
+      const scrollBar = document.getElementById("scrollBar");
+
+      window.addEventListener("scroll", () => {
+        const docElem = document.documentElement;
+        const scrollTop = docElem.scrollTop;
+        const scrollHeight = docElem.scrollHeight - docElem.clientHeight;
+        const pct = (scrollTop / scrollHeight) * 100;
+        scrollBar.style.width = pct + "%";
+      });
+    </script>
+
+    <!-- Home -->
+    <article id="1" class="wrapper style1">
+      <div class="container">
+        <div class="row">
+          <div class="col-4 col-5-large col-12-medium">
+            <span class="image fit"
+              ><img src="images/Plan de travail 7.png" alt=""
+            /></span>
+          </div>
+          <div class="col-8 col-7-large col-12-medium">
+            <header>
+              <h1>
+                <strong>La ville de demain</strong> <br /><br />se plante
+                aujourd’hui.<strong></strong>
+              </h1>
+            </header>
+            <p>
+              Rejoignez une plateforme citoyenne qui valorise vos actions
+              positives : signalez, proposez, bougez autrement… et contribuez à
+              une ville plus juste, plus fluide, plus vivante
+            </p>
+            <a href="#2" class="button large scrolly"
+              >Participer au changement</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="scroll-arrow">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article id="2" class="wrapper style2">
+      <div class="container">
+        <header>
+          <h2>Une application citoyenne, éthique et utile.</h2>
+          <p>
+            Pensée pour tous, portée par chacun. Construisons ensemble la ville
+            de demain.
+          </p>
+        </header>
+        <div class="row aln-center">
+          <div class="col-4 col-6-medium col-12-small">
+            <section class="box style1">
+              <span class="icon featured fa-comments"></span>
+              <h3>Impliquer chaque voix</h3>
+              <p>
+                Signalez facilement un problème, proposez une idée ou donnez
+                votre avis sur les décisions locales. Parce que votre parole
+                compte.
+              </p>
+            </section>
+          </div>
+          <div class="col-4 col-6-medium col-12-small">
+            <section class="box style1">
+              <!-- Remplace fa-camera-retro par fa-crosshairs -->
+              <span class="icon solid featured fa-crosshairs"></span>
+              <h3>Précision pour mieux agir</h3>
+              <p>
+                Ajoutez le type de signalement et sa localisation pour préciser
+                les problèmes rencontrés dans l’espace public.
+              </p>
+            </section>
+          </div>
+          <div class="col-4 col-6-medium col-12-small">
+            <section class="box style1">
+              <span class="icon featured fa-thumbs-up"></span>
+              <h3>Valoriser les bons gestes</h3>
+              <p>
+                Gagnez des points grâce à vos déplacements responsables ou à
+                votre participation à la vie locale. Être acteur de sa ville,
+                c’est récompensé.
+              </p>
+            </section>
+          </div>
+        </div>
+        <footer>
+          <p>
+            Une ville plus accessible, plus verte et plus solidaire, ça commence
+            ici.
+          </p>
+          <a href="http://flurban.mlebouard.fr/" class="button large scrolly"
+            >Découvrir l'application <strong>➚</strong></a
+          >
+        </footer>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article id="3" class="wrapper style3">
+      <div class="container">
+        <header>
+          <h2>Pourquoi cette application est différente ?</h2>
+          <p>
+            Inspirée de projets existants, mais conçue pour aller plus loin dans
+            la participation citoyenne, la mobilité durable et l’inclusion
+            réelle.
+          </p>
+        </header>
+        <div class="row">
+          <div class="col-4 col-6-medium col-12-small">
+            <article class="box style2">
+              <a href="http://flurban.mlebouard.fr/" class="image featured"
+                ><img src="images/signalement.png" alt=""
+              /></a>
+              <h3>
+                <a href="http://flurban.mlebouard.fr/"
+                  >Participation simplifiée</a
+                >
+              </h3>
+              <p>
+                Un système clair et rapide pour signaler les problèmes ou
+                proposer des idées.
+              </p>
+            </article>
+          </div>
+          <div class="col-4 col-6-medium col-12-small">
+            <article class="box style2">
+              <a href="http://flurban.mlebouard.fr/" class="image featured"
+                ><img src="images/Plan de travail 1 copie 4.png" alt=""
+              /></a>
+              <h3>
+                <a href="http://flurban.mlebouard.fr/">Mobilité responsable</a>
+              </h3>
+              <p>
+                Des recommandations personnalisées pour marcher ou pédaler ses
+                trajets.
+              </p>
+            </article>
+          </div>
+          <div class="col-4 col-6-medium col-12-small">
+            <article class="box style2">
+              <a href="http://flurban.mlebouard.fr/" class="image featured"
+                ><img src="images/recompenses.png" alt=""
+              /></a>
+              <h3>
+                <a href="http://flurban.mlebouard.fr/">Récompenses locales</a>
+              </h3>
+              <p>
+                Des points convertibles en réductions chez des partenaires
+                engagés.
+              </p>
+            </article>
+          </div>
+          <div class="col-4 col-6-medium col-12-small">
+            <article class="box style2">
+              <a href="http://flurban.mlebouard.fr/" class="image featured"
+                ><img src="images/carte_partagee_card.png" alt=""
+              /></a>
+              <h3>
+                <a href="http://flurban.mlebouard.fr/">Suivi transparent</a>
+              </h3>
+              <p>
+                Vos signalements sont visibles sur une carte partagée. Suivez
+                les actions prises par la ville.
+              </p>
+            </article>
+          </div>
+          <div class="col-4 col-6-medium col-12-small">
+            <article class="box style2">
+              <a href="http://flurban.mlebouard.fr/" class="image featured"
+                ><img src="images/Plan de travail 8.png" alt=""
+              /></a>
+              <h3>
+                <a href="http://flurban.mlebouard.fr/">Agenda collectif</a>
+              </h3>
+              <p>
+                Accès aux événements citoyens, ateliers, réunions, pour créer du
+                lien et s'impliquer.
+              </p>
+            </article>
+          </div>
+          <div class="col-4 col-6-medium col-12-small">
+            <article class="box style2">
+              <a href="http://flurban.mlebouard.fr/" class="image featured"
+                ><img src="images/home.png" alt=""
+              /></a>
+              <h3>
+                <a href="http://flurban.mlebouard.fr/"
+                  >Une appli accessible à tous</a
+                >
+              </h3>
+              <p>Langage simple, navigation intuitive pour tous les publics.</p>
+            </article>
+          </div>
+        </div>
+        <footer>
+          <p>
+            C’est en rendant chaque citoyen acteur qu’on transforme la ville.
+          </p>
+          <a href="http://flurban.mlebouard.fr/" class="button large scrolly"
+            >Voir toutes les fonctionnalités <strong>➚</strong></a
+          >
+        </footer>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article id="4" class="wrapper style4">
+      <div class="container medium">
+        <header>
+          <h2>Envie d’en savoir plus ou de proposer votre ville ?</h2>
+          <p>
+            Contactez-nous pour recevoir une démo, rejoindre le projet ou
+            partager vos idées. Ensemble, faisons pousser la ville de demain.
+          </p>
+        </header>
+        <div class="row">
+          <div class="col-12">
+            <form
+              id="contactForm"
+              action="https://formspree.io/f/xblyklqk"
+              method="POST"
+            >
+              <input type="hidden" name="_captcha" value="false" />
+
+              <div class="row">
+                <div class="col-6 col-12-small">
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Nom"
+                    required
+                  />
+                </div>
+                <div class="col-6 col-12-small">
+                  <input
+                    type="email"
+                    name="_replyto"
+                    id="email"
+                    placeholder="Email"
+                    required
+                    style="border: none; background: #282828"
+                  />
+                </div>
+                <div class="col-12">
+                  <input
+                    type="text"
+                    name="subject"
+                    id="subject"
+                    placeholder="Objet"
+                  />
+                </div>
+                <div class="col-12">
+                  <textarea
+                    name="message"
+                    id="message"
+                    placeholder="Corps de la demande"
+                    required
+                  ></textarea>
+                </div>
+                <div class="col-12">
+                  <ul class="actions">
+                    <li><input type="submit" value="Envoyer" /></li>
+                    <li>
+                      <input type="reset" value="Réinitialiser" class="alt" />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </form>
+
+            <!-- container pour le message de succès / erreur -->
+            <div
+              id="formMessage"
+              style="margin-top: 1em; font-weight: bold"
+            ></div>
+
+            <script>
+              document
+                .getElementById("contactForm")
+                .addEventListener("submit", function (e) {
+                  e.preventDefault();
+
+                  const form = this;
+                  const url = form.action;
+                  const data = new FormData(form);
+
+                  fetch(url, {
+                    method: "POST",
+                    body: data,
+                    headers: {
+                      Accept: "application/json",
+                    },
+                  })
+                    .then((response) => {
+                      const msgDiv = document.getElementById("formMessage");
+                      if (response.ok) {
+                        msgDiv.style.color = "#2ecc71";
+                        msgDiv.textContent =
+                          "Votre message a bien été envoyé !";
+                        form.reset();
+                      } else {
+                        return response.json().then((err) => {
+                          throw new Error(
+                            err && err.error
+                              ? err.error
+                              : "Une erreur est survenue"
+                          );
+                        });
+                      }
+                    })
+                    .catch((error) => {
+                      const msgDiv = document.getElementById("formMessage");
+                      msgDiv.style.color = "#e74c3c";
+                      msgDiv.textContent = "Erreur : " + error.message;
+                    });
+                });
+            </script>
+          </div>
+        </div>
+
+        <!-- Newsletter sous le formulaire de contact -->
+        <!-- Newsletter sous ton formulaire de contact -->
+        <div class="row" style="margin-top: 2em">
+          <div class="col-12">
+            <form id="newsletterForm">
+              <div class="row">
+                <div class="col-8 col-12-small">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Inscris-toi à la newsletter"
+                    required
+                    style="
+                      width: 100%;
+                      padding: 0.75em;
+                      border: none;
+                      background: #282828;
+                      color: #fff;
+                      border-radius: 4px;
+                    "
+                  />
+                </div>
+                <div class="col-4 col-12-small">
+                  <input
+                    type="submit"
+                    value="S’abonner"
+                    style="
+                      width: 100%;
+                      padding: 0.75em;
+                      border: none;
+                      background: #2ecc71;
+                      color: #fff;
+                      cursor: pointer;
+                      border-radius: 4px;
+                    "
+                  />
+                </div>
+              </div>
+            </form>
+            <div
+              id="newsletterMessage"
+              style="margin-top: 1em; font-weight: bold"
+            ></div>
+          </div>
+        </div>
+
+        <script>
+          document
+            .getElementById("newsletterForm")
+            .addEventListener("submit", async (e) => {
+              e.preventDefault();
+              const form = e.target;
+              const input = form.querySelector('input[name="email"]');
+              const msg = document.getElementById("newsletterMessage");
+              const submitBtn = form.querySelector('input[type="submit"]');
+
+              msg.textContent = "";
+              submitBtn.disabled = true;
+
+              try {
+                const res = await fetch("subscribe.php", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ email: input.value.trim() }),
+                });
+                const json = await res.json();
+
+                if (res.ok) {
+                  msg.style.color = "#2ecc71";
+                  msg.textContent = "🎉 Merci, vous êtes inscrit·e !";
+                  form.reset();
+                } else {
+                  msg.style.color = "#e74c3c";
+                  msg.textContent = json.error || "Une erreur est survenue.";
+                }
+              } catch (err) {
+                msg.style.color = "#e74c3c";
+                msg.textContent = "Erreur réseau, réessayez.";
+              } finally {
+                submitBtn.disabled = false;
+              }
+            });
+        </script>
+
+        <footer>
+          <ul id="copyright">
+            <li>2025 &copy; Tous droits réservés</li>
+            <li>MMI Troyes X Castres</li>
+          </ul>
+        </footer>
+      </div>
+    </article>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- Bouton “Back to Top” -->
+    <div id="backToTop" title="Remonter en haut">
+      <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+      const btn = document.getElementById("backToTop");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 200) {
+          btn.classList.add("show");
+        } else {
+          btn.classList.remove("show");
+        }
+      });
+
+      btn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>
