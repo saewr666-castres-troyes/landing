@@ -24,6 +24,7 @@ La page intègre :
 └── README.md            # Ce fichier
 
 
+
 ## Technologies utilisées
 
 * **HTML5** : structure sémantique de la page.
